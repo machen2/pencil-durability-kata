@@ -20,5 +20,10 @@ RSpec.describe PencilDurability::Paper do
         it "has paper_text" do 
             expect(paper).to respond_to('paper_text')
         end
+
+        it "returns a string when called" do 
+            expect(paper.paper_text).to be_a(String)
+        end
     end
+
 end
