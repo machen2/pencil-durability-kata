@@ -9,4 +9,10 @@ RSpec.describe PencilDurability::Paper do
     it "must able to create an instance of Paper" do 
         expect(paper).to be_a(PencilDurability::Paper)
     end
+
+    describe "#paper_text" do 
+        it "has paper_text" do 
+            expect(paper).to respond_to('paper_text')
+        end
+    end
 end
