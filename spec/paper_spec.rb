@@ -10,6 +10,10 @@ RSpec.describe PencilDurability::Paper do
         it "initializes a new instance of paper" do 
             expect{PencilDurability::Paper.new}.to_not raise_error
         end
+
+        it "sets the paper_text attribute of the instance to an empty string" do 
+            expect(paper.paper_text).to eq("")
+        end
     end 
 
     describe "#paper_text" do 
