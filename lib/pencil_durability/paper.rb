@@ -1,3 +1,3 @@
 class PencilDurability::Paper
-
+    
 end
