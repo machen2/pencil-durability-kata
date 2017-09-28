@@ -1,0 +1,3 @@
+class PencilDurability::Cli
+    
+end
