@@ -1,3 +1,5 @@
 #!/usr/bin/env ruby
 
 require_relative '../lib/pencil_durability'
+
+PencilDurability::Cli.new.call
