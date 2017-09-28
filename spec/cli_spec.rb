@@ -11,4 +11,11 @@ RSpec.describe PencilDurability::Cli do
             expect{cli.call}.to output("Welcome!\n").to_stdout
         end
     end
+
+    describe PencilDurability::Cli, '#welcome_user' do 
+        cli = PencilDurability::Cli.new
+        it "welcomes the user with a message" do 
+            expect{cli.welcome_user}.to output("Welcome!\n").to_stdout
+        end
+    end
 end
