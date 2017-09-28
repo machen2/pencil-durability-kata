@@ -29,4 +29,11 @@ RSpec.describe PencilDurability::Paper do
             expect(paper.paper_text).to be_a(String)
         end
     end
+
+    describe "#write" do 
+        it "takes a string as an argument and appends it to paper_text" do 
+            paper.write("She sells sea shells")
+            expect(paper.paper_text).to eq("She sells sea shells")
+        end
+    end
 end
