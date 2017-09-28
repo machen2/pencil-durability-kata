@@ -5,6 +5,10 @@ RSpec.describe PencilDurability::Paper do
         expect(PencilDurability::Paper).to be_a(Class)
     end
 
+    it "responds to the write method with 1 argument" do 
+        expect(paper).to respond_to(:write).with(1).argument
+    end
+
     let(:paper) { PencilDurability::Paper.new }
     describe "#new" do 
         it "initializes a new instance of paper" do 
@@ -25,5 +29,4 @@ RSpec.describe PencilDurability::Paper do
             expect(paper.paper_text).to be_a(String)
         end
     end
-
 end

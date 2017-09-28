@@ -4,4 +4,7 @@ class PencilDurability::Paper
     def initialize
         @paper_text = ""
     end
+
+    def write(input_text)
+    end
 end
