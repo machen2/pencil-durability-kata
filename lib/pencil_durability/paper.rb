@@ -1,4 +1,6 @@
 class PencilDurability::Paper
-    def paper_text
+    attr_reader :paper_text
+
+    def initialize
     end
 end

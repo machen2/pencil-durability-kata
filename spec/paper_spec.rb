@@ -6,9 +6,11 @@ RSpec.describe PencilDurability::Paper do
     end
 
     let(:paper) { PencilDurability::Paper.new }
-    it "must able to create an instance of Paper" do 
-        expect(paper).to be_a(PencilDurability::Paper)
-    end
+    describe "#new" do 
+        it "initializes a new instance of paper" do 
+            expect{PencilDurability::Paper.new}.to_not raise_error
+        end
+    end 
 
     describe "#paper_text" do 
         it "has paper_text" do 
