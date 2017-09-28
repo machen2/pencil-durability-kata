@@ -6,6 +6,6 @@ class PencilDurability::Paper
     end
 
     def write(input_text)
-        @paper_text = input_text
+        @paper_text += input_text
     end
 end

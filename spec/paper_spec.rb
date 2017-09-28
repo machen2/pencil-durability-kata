@@ -35,5 +35,11 @@ RSpec.describe PencilDurability::Paper do
             paper.write("She sells sea shells")
             expect(paper.paper_text).to eq("She sells sea shells")
         end
+
+        it "appends to existing text on the paper" do 
+            paper.write("She sells sea shells")
+            paper.write(" down by the sea shore")
+            expect(paper.paper_text).to eq("She sells sea shells down by the sea shore")
+        end
     end
 end
