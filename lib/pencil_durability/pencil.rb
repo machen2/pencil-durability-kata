@@ -1,0 +1,3 @@
+class PencilDurability::Pencil
+
+end
