@@ -5,11 +5,16 @@ RSpec.describe PencilDurability::Pencil do
         expect(PencilDurability::Pencil).to be_a(Class)
     end
 
-    let(:pencil) { PencilDurability::Pencil.new }
+    let(:pencil) { PencilDurability::Pencil.new(1000) }
     
     describe "#new" do 
         it "initializes a new instance of pencil" do 
-            expect{PencilDurability::Pencil.new}.to_not raise_error
+            expect{PencilDurability::Pencil.new(1000)}.to_not raise_error
+        end
+
+        it "initializes an instance with a given value for point durability" do
+            test_pencil = PencilDurability::Pencil.new(1000)
+            expect(test_pencil.point_durability).to eq(1000)
         end
     end 
 
