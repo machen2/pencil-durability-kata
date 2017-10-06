@@ -16,6 +16,11 @@ RSpec.describe PencilDurability::Pencil do
             test_pencil = PencilDurability::Pencil.new(1000)
             expect(test_pencil.point_durability).to eq(1000)
         end
+
+        it "sets a default value for point_durability if not given one upon initilization" do 
+            test_pencil = PencilDurability::Pencil.new()
+            expect(test_pencil.point_durability).to eq(5000)
+        end
     end 
 
     describe "#point_durability" do 
