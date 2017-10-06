@@ -27,5 +27,10 @@ RSpec.describe PencilDurability::Pencil do
         it "has a point_durability" do 
             expect(pencil).to respond_to('point_durability')
         end
+
+        it "returns an integer when called" do 
+            expect(pencil.point_durability).to be_an(Integer)
+        end
     end
+
 end
