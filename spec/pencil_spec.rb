@@ -33,4 +33,10 @@ RSpec.describe PencilDurability::Pencil do
         end
     end
 
+    describe "#point_degradation" do 
+        it "can be called with 1 argument" do 
+            expect(pencil).to respond_to(:point_degradation).with(1).argument
+        end
+    end
+
 end
