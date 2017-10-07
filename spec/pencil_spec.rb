@@ -48,6 +48,11 @@ RSpec.describe PencilDurability::Pencil do
             result = pencil.point_degradation("She sells sea shells")
             expect(result).to eq("She sells sea shells")            
         end
-    end
 
+        it "adds spaces instead of characters to valid_text if point_durability is too low" do 
+            test_pencil = PencilDurability::Pencil.new(5)
+            result = test_pencil.point_degradation("She Sells")
+            expect(result).to eq("She      ")
+        end
+    end
 end
