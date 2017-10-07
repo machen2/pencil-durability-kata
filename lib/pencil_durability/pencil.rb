@@ -34,5 +34,6 @@ class PencilDurability::Pencil
     end
 
     def write_to_paper(input)
+        valid_text = point_degradation(input)
     end
 end

@@ -59,6 +59,12 @@ RSpec.describe PencilDurability::Pencil do
     describe "#write_to_paper" do 
         it "is called with 1 argument" do 
             expect(pencil).to respond_to(:write_to_paper).with(1).argument
-        end            
+        end   
+        
+        it "calls point_degradation with appropriate arguments" do
+            input = "She sells sea shells" 
+            expect(pencil).to receive(:point_degradation).with(input)
+            pencil.write_to_paper(input)
+        end
     end
 end
