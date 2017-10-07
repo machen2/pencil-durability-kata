@@ -43,6 +43,11 @@ RSpec.describe PencilDurability::Pencil do
             pencil.point_degradation("She sells sea shells")
             expect(pencil.point_durability).to eq(point_value - 18)
         end
+        
+        it "returns a string of valid text based on point_durability" do
+            result = pencil.point_degradation("She sells sea shells")
+            expect(result).to eq("She sells sea shells")            
+        end
     end
 
 end
