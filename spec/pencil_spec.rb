@@ -55,4 +55,10 @@ RSpec.describe PencilDurability::Pencil do
             expect(result).to eq("She      ")
         end
     end
+
+    describe "#write_to_paper" do 
+        it "is called with 1 argument" do 
+            expect(pencil).to respond_to(:write_to_paper).with(1).argument
+        end            
+    end
 end

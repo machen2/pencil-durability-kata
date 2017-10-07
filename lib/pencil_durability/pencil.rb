@@ -7,12 +7,12 @@ class PencilDurability::Pencil
 
     def point_degradation(input)
         valid_text = ""
-        used_next = false
+        dull = false
 
         input.split('').each do |character|
             if point_durability == 0 || (('A'..'Z').include?(character) && @point_durability < 2)
                 valid_text += " "
-                used_next = true
+                dull = true
                 next
             end
 
@@ -22,7 +22,7 @@ class PencilDurability::Pencil
             elsif character == '\n' || character == ' '
                 valid_text += character                
             elsif @point_durability >= 1
-                if used_next == true 
+                if dull == true 
                     valid_text += " "
                 else
                     @point_durability -= 1
@@ -31,5 +31,8 @@ class PencilDurability::Pencil
             end
         end
         valid_text
+    end
+
+    def write_to_paper(input)
     end
 end
