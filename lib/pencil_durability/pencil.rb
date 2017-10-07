@@ -6,5 +6,13 @@ class PencilDurability::Pencil
     end
 
     def point_degradation(input)
+        input.split('').each do |character|
+            if ('A'..'Z').include?(character) && @point_durability >= 2
+                @point_durability -= 2
+            elsif character == '\n' || character == ' '
+            elsif @point_durability >= 1
+                @point_durability -= 1
+            end
+        end
     end
 end

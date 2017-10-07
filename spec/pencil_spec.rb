@@ -37,6 +37,12 @@ RSpec.describe PencilDurability::Pencil do
         it "can be called with 1 argument" do 
             expect(pencil).to respond_to(:point_degradation).with(1).argument
         end
+
+        it "adjusts point durability based on input" do 
+            point_value = pencil.point_durability
+            pencil.point_degradation("She sells sea shells")
+            expect(pencil.point_durability).to eq(point_value - 18)
+        end
     end
 
 end
