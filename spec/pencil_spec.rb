@@ -1,4 +1,5 @@
 require "spec_helper"
+require_relative '../lib/pencil_durability/paper.rb'
 
 RSpec.describe PencilDurability::Pencil do 
     it "is defined as a class" do 
@@ -61,10 +62,9 @@ RSpec.describe PencilDurability::Pencil do
             expect(pencil).to respond_to(:write_to_paper).with(1).argument
         end   
         
-        it "calls point_degradation with appropriate arguments" do
-            input = "She sells sea shells" 
-            expect(pencil).to receive(:point_degradation).with(input)
-            pencil.write_to_paper(input)
-        end
+        it "adjusts point_durability correctly based on input string" do
+            pencil.write_to_paper("She sells sea shells")
+            expect(pencil.point_durability).to eq(982)         
+       end
     end
 end

@@ -1,4 +1,4 @@
-class PencilDurability::Pencil
+class PencilDurability::Pencil 
     attr_reader :point_durability
 
     def initialize(point_durability=5000)
@@ -29,11 +29,11 @@ class PencilDurability::Pencil
                     valid_text += character 
                 end               
             end
-        end
+        end    
         valid_text
     end
 
-    def write_to_paper(input)
-        valid_text = point_degradation(input)
+    def write_to_paper(input) 
+        valid_write = point_degradation(input)  
     end
 end
