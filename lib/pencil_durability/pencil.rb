@@ -40,4 +40,7 @@ class PencilDurability::Pencil
         valid_write = point_degradation(input) 
         paper_object.write(valid_write) 
     end
+
+    def sharpen
+    end
 end

@@ -92,4 +92,10 @@ RSpec.describe PencilDurability::Pencil do
             expect(pencil.initial_point_durability).to be_an(Integer)
         end
     end
+   
+    describe "#sharpen" do 
+        it "can be called with no arguments" do 
+            expect(pencil).to respond_to('sharpen').with(0).arguments
+        end
+    end
 end
