@@ -72,5 +72,10 @@ RSpec.describe PencilDurability::Pencil do
         pencil.write_to_paper("She sells sea shells", paper)
         expect(paper.paper_text).to eq("She sells sea shells")
        end
+
+       it "returns the correct string based on input and durability" do
+        test_pencil = PencilDurability::Pencil.new(4)
+        expect(test_pencil.write_to_paper("Text", paper)).to eq("Tex ")
+       end
     end
 end
