@@ -87,5 +87,9 @@ RSpec.describe PencilDurability::Pencil do
         it "has an initial point durability" do 
             expect(pencil).to respond_to('initial_point_durability')
         end
+
+        it "returns an integer when called" do 
+            expect(pencil.initial_point_durability).to be_an(Integer)
+        end
     end
 end
