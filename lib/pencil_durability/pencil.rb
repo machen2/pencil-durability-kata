@@ -5,6 +5,7 @@ class PencilDurability::Pencil
 
     def initialize(point_durability=5000)
         @point_durability = point_durability
+        @initial_point_durability = point_durability
     end
 
     def point_degradation(input)
