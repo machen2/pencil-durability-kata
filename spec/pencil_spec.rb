@@ -78,4 +78,10 @@ RSpec.describe PencilDurability::Pencil do
         expect(test_pencil.write_to_paper("Text", paper)).to eq("Tex ")
        end
     end
+
+    describe "#initial_point_durability" do 
+        it "has an initial point durability" do 
+            expect(pencil).to respond_to('initial_point_durability')
+        end
+    end
 end
