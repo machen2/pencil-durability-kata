@@ -7,6 +7,7 @@ RSpec.describe PencilDurability::Pencil do
     end
 
     let(:pencil) { PencilDurability::Pencil.new(1000) }
+    let(:paper) { PencilDurability::Paper.new }    
     
     describe "#new" do 
         it "initializes a new instance of pencil" do 
@@ -58,13 +59,18 @@ RSpec.describe PencilDurability::Pencil do
     end
 
     describe "#write_to_paper" do 
-        it "is called with 1 argument" do 
-            expect(pencil).to respond_to(:write_to_paper).with(1).argument
+        it "is called with 2 arguments" do 
+            expect(pencil).to respond_to(:write_to_paper).with(2).argument
         end   
         
         it "adjusts point_durability correctly based on input string" do
-            pencil.write_to_paper("She sells sea shells")
+            pencil.write_to_paper("She sells sea shells", paper)
             expect(pencil.point_durability).to eq(982)         
+       end
+
+       it "appends the valid input text to the paper object passed in" do 
+        pencil.write_to_paper("She sells sea shells", paper)
+        expect(paper.paper_text).to eq("She sells sea shells")
        end
     end
 end

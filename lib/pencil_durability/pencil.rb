@@ -1,3 +1,5 @@
+require_relative './paper.rb'
+
 class PencilDurability::Pencil 
     attr_reader :point_durability
 
@@ -33,7 +35,8 @@ class PencilDurability::Pencil
         valid_text
     end
 
-    def write_to_paper(input) 
-        valid_write = point_degradation(input)  
+    def write_to_paper(input, paper_object) 
+        valid_write = point_degradation(input) 
+        paper_object.write(valid_write) 
     end
 end
