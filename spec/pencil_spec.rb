@@ -97,5 +97,11 @@ RSpec.describe PencilDurability::Pencil do
         it "can be called with no arguments" do 
             expect(pencil).to respond_to('sharpen').with(0).arguments
         end
+
+        it "resets the point durability of the pencil" do 
+            pencil.write_to_paper("She sells sea shells", paper)
+            pencil.sharpen
+            expect(pencil.point_durability).to eq(1000)
+        end
     end
 end

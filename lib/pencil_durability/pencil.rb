@@ -42,5 +42,6 @@ class PencilDurability::Pencil
     end
 
     def sharpen
+        @point_durability = @initial_point_durability
     end
 end
