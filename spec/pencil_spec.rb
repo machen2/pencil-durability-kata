@@ -145,5 +145,9 @@ RSpec.describe PencilDurability::Pencil do
         it "has an eraser durability" do 
             expect(pencil).to respond_to('eraser_durability')
         end
+
+        it "returns an integer when called" do 
+            expect(pencil.eraser_durability).to be_an(Integer)
+        end
     end
 end
