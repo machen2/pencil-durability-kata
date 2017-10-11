@@ -48,4 +48,7 @@ class PencilDurability::Pencil
             @length -= 1
         end
     end
+
+    def erase(input)
+    end
 end

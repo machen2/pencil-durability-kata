@@ -136,4 +136,10 @@ RSpec.describe PencilDurability::Pencil do
             expect(pencil.length).to be_an(Integer)
         end
     end
+
+    describe "#erase" do 
+        it "can be called with 1 argument" do
+             expect(pencil).to respond_to('erase').with(1).argument
+        end
+    end
 end
