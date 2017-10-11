@@ -10,5 +10,13 @@ class PencilDurability::Paper
     end
     
     def erase(input)
+        count = 0
+        index = @paper_text.rindex(input)
+        
+        while count < input.length
+            @paper_text[index] = " "
+            index += 1
+            count += 1
+        end
     end
 end

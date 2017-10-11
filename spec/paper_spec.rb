@@ -47,5 +47,11 @@ RSpec.describe PencilDurability::Paper do
         it "can be called with 1 argument" do
              expect(paper).to respond_to('erase').with(1).arguments
         end
+
+        it "replaces the last occurence of the input with empty spaces" do 
+            paper.write("How much wood would a woodchuck chuck if a woodchuck could chuck wood?")
+            paper.erase("chuck")
+            expect(paper.paper_text).to eq("How much wood would a woodchuck chuck if a woodchuck could       wood?")
+        end
     end
 end
