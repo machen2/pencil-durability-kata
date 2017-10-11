@@ -53,5 +53,12 @@ RSpec.describe PencilDurability::Paper do
             paper.erase("chuck")
             expect(paper.paper_text).to eq("How much wood would a woodchuck chuck if a woodchuck could       wood?")
         end
+
+        it "erases the correct last occurrence of the input if the same input is erased again" do 
+            paper.write("How much wood would a woodchuck chuck if a woodchuck could chuck wood?")
+            paper.erase("chuck")
+            paper.erase("chuck")
+            expect(paper.paper_text).to eq("How much wood would a woodchuck chuck if a wood      could       wood?")
+        end
     end
 end
