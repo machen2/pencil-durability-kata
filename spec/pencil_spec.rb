@@ -104,4 +104,10 @@ RSpec.describe PencilDurability::Pencil do
             expect(pencil.point_durability).to eq(1000)
         end
     end
+
+    describe "#length" do 
+        it "has a length" do 
+            expect(pencil).to respond_to('length')
+        end
+    end
 end
