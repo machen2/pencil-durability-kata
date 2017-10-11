@@ -113,5 +113,9 @@ RSpec.describe PencilDurability::Pencil do
         it "has a length" do 
             expect(pencil).to respond_to('length')
         end
+
+        it "returns an integer when called" do 
+            expect(pencil.length).to be_an(Integer)
+        end
     end
 end
