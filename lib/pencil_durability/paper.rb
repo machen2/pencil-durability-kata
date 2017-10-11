@@ -8,4 +8,7 @@ class PencilDurability::Paper
     def write(input_text)
         @paper_text += input_text
     end
+    
+    def erase(input)
+    end
 end

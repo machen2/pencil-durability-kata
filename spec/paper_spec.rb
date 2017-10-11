@@ -42,4 +42,10 @@ RSpec.describe PencilDurability::Paper do
             expect(paper.paper_text).to eq("She sells sea shells down by the sea shore")
         end
     end
+
+    describe "#erase" do 
+        it "can be called with 1 argument" do
+             expect(paper).to respond_to('erase').with(1).arguments
+        end
+    end
 end

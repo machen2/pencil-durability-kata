@@ -38,7 +38,7 @@ class PencilDurability::Pencil
     end
 
     def write_to_paper(input, paper_object) 
-        valid_write = point_degradation(input) 
+        valid_write = point_degradation(input)
         paper_object.write(valid_write) 
     end
 
@@ -47,8 +47,5 @@ class PencilDurability::Pencil
             @point_durability = @initial_point_durability
             @length -= 1
         end
-    end
-
-    def erase(input)
     end
 end
