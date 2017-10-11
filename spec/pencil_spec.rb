@@ -107,6 +107,11 @@ RSpec.describe PencilDurability::Pencil do
             pencil.sharpen
             expect(pencil.point_durability).to eq(1000)
         end
+
+        it "reduces pencil length by 1 when called" do 
+            pencil.sharpen
+            expect(pencil.length).to eq(9)
+        end
     end
 
     describe "#length" do 
