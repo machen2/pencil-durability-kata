@@ -3,8 +3,9 @@ require_relative './paper.rb'
 class PencilDurability::Pencil 
     attr_reader :point_durability, :initial_point_durability, :length, :eraser_durability
 
-    def initialize(length, point_durability=5000)
+    def initialize(length, eraser_durability, point_durability=5000)
         @length = length
+        @eraser_durability = eraser_durability
         @point_durability = point_durability
         @initial_point_durability = point_durability
     end

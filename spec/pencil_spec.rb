@@ -6,21 +6,21 @@ RSpec.describe PencilDurability::Pencil do
         expect(PencilDurability::Pencil).to be_a(Class)
     end
 
-    let(:pencil) { PencilDurability::Pencil.new(10, 1000) }
+    let(:pencil) { PencilDurability::Pencil.new(10, 20, 1000) }
     let(:paper) { PencilDurability::Paper.new }    
     
     describe "#new" do 
         it "initializes a new instance of pencil" do 
-            expect{PencilDurability::Pencil.new(10, 1000)}.to_not raise_error
+            expect{PencilDurability::Pencil.new(10, 20, 1000)}.to_not raise_error
         end
 
         it "initializes an instance with a given value for point durability" do
-            test_pencil = PencilDurability::Pencil.new(10, 1000)
+            test_pencil = PencilDurability::Pencil.new(10, 20, 1000)
             expect(test_pencil.point_durability).to eq(1000)
         end
 
         it "sets a default value for point_durability if not given one upon initilization" do 
-            test_pencil = PencilDurability::Pencil.new(10)
+            test_pencil = PencilDurability::Pencil.new(10, 20)
             expect(test_pencil.point_durability).to eq(5000)
         end
 
@@ -30,6 +30,10 @@ RSpec.describe PencilDurability::Pencil do
 
         it "initializes an instance with a given value for pencil length" do
             expect(pencil.length).to eq(10)
+        end
+
+        it "initializes an instance with a given value for eraser durability" do
+            expect(pencil.eraser_durability).to eq(20)
         end
     end 
 
@@ -60,7 +64,7 @@ RSpec.describe PencilDurability::Pencil do
         end
 
         it "adds spaces instead of characters to valid_text if point_durability is too low" do 
-            test_pencil = PencilDurability::Pencil.new(10, 5)
+            test_pencil = PencilDurability::Pencil.new(10, 20, 5)
             result = test_pencil.point_degradation("She Sells")
             expect(result).to eq("She      ")
         end
@@ -82,7 +86,7 @@ RSpec.describe PencilDurability::Pencil do
        end
 
        it "returns the correct string based on input and durability" do
-        test_pencil = PencilDurability::Pencil.new(10, 4)
+        test_pencil = PencilDurability::Pencil.new(10, 20, 4)
         expect(test_pencil.write_to_paper("Text", paper)).to eq("Tex ")
        end
     end
@@ -114,14 +118,14 @@ RSpec.describe PencilDurability::Pencil do
         end
 
         it "does not restore point durability if length is 0" do 
-            test_pencil = PencilDurability::Pencil.new(0, 1000)
+            test_pencil = PencilDurability::Pencil.new(0, 20, 1000)
             test_pencil.write_to_paper("She sells sea shells", paper)
             test_pencil.sharpen
             expect(test_pencil.point_durability).to eq(982)
         end
 
         it "does not reduce length if already 0" do 
-            test_pencil = PencilDurability::Pencil.new(0, 1000)
+            test_pencil = PencilDurability::Pencil.new(0, 20, 1000)
             test_pencil.sharpen
             expect(test_pencil.length).to eq(0)
         end
