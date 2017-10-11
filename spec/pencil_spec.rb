@@ -113,11 +113,17 @@ RSpec.describe PencilDurability::Pencil do
             expect(pencil.length).to eq(9)
         end
 
-        it "does not restore pencil durability if length is 0" do 
+        it "does not restore point durability if length is 0" do 
             test_pencil = PencilDurability::Pencil.new(0, 1000)
             test_pencil.write_to_paper("She sells sea shells", paper)
             test_pencil.sharpen
             expect(test_pencil.point_durability).to eq(982)
+        end
+
+        it "does not reduce length if already 0" do 
+            test_pencil = PencilDurability::Pencil.new(0, 1000)
+            test_pencil.sharpen
+            expect(test_pencil.length).to eq(0)
         end
     end
 
