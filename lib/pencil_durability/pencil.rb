@@ -67,4 +67,7 @@ class PencilDurability::Pencil
         end
         valid_erase.reverse.join("")
     end
+
+    def erase_from_paper(input)
+    end
 end

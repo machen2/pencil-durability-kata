@@ -173,4 +173,10 @@ RSpec.describe PencilDurability::Pencil do
             expect(result).to eq("Buffalo B   ")
         end
     end
+
+    describe "#erase_from_paper" do 
+        it "is called with an argument" do 
+            expect(pencil).to respond_to(:erase_from_paper).with(1).argument
+        end
+    end
 end
