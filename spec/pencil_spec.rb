@@ -166,5 +166,11 @@ RSpec.describe PencilDurability::Pencil do
             result = pencil.eraser_degradation("Buffalo Bill")
             expect(result).to eq("            ")            
         end
+
+        it "does not erase characters if eraser_durability is too low" do 
+            test_pencil = PencilDurability::Pencil.new(10, 3, 1000)
+            result = test_pencil.eraser_degradation("Buffalo Bill")
+            expect(result).to eq("Buffalo B   ")
+        end
     end
 end

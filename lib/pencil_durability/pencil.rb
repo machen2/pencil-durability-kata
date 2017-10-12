@@ -54,11 +54,15 @@ class PencilDurability::Pencil
         valid_erase = []
 
         input.split('').reverse.each do |character|
-            if character != ' ' && character != '\n'
-                @eraser_durability -= 1
-                valid_erase << " "   
+            if eraser_durability == 0 
+                valid_erase << character
             else
-                valid_erase << character                         
+                if character != ' ' && character != '\n'
+                    @eraser_durability -= 1
+                    valid_erase << " "   
+                else
+                    valid_erase << character                         
+                end
             end
         end
         valid_erase.reverse.join("")
