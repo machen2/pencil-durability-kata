@@ -76,6 +76,7 @@ class PencilDurability::Pencil
     def edit_paper(input, paper_object)
         if paper_object.index_of_erased != []
             valid_text = point_degradation(input)
+            paper_object.edit(valid_text)
         end
         paper_object.paper_text
     end

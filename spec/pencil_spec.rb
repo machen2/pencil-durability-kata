@@ -216,5 +216,12 @@ RSpec.describe PencilDurability::Pencil do
             result = pencil.edit_paper("onion", paper)
             expect(result).to eq("An apple a day keeps the doctor away")
         end
+
+        it "returns the correct edited string based on input, erase history, and point_durability" do 
+            pencil.write_to_paper("An apple a day keeps the doctor away", paper)
+            pencil.erase_from_paper("apple", paper)            
+            result = pencil.edit_paper("onion", paper)
+            expect(result).to eq("An onion a day keeps the doctor away")            
+        end
     end
 end
