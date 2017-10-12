@@ -202,5 +202,12 @@ RSpec.describe PencilDurability::Pencil do
         it "is called with 2 arguments" do 
             expect(pencil).to respond_to(:edit_paper).with(2).arguments
         end
+
+        it "adjusts the point_durability based on the edit" do 
+            pencil.write_to_paper("An apple a day keeps the doctor away", paper)            
+            point_value = pencil.point_durability
+            pencil.edit_paper("onion", paper)
+            expect(pencil.point_durability).to eq(point_value - 5)
+        end
     end
 end

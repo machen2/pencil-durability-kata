@@ -74,5 +74,6 @@ class PencilDurability::Pencil
     end
 
     def edit_paper(input, paper_object)
+        point_degradation(input)
     end
 end
