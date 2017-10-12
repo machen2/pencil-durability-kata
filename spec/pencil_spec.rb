@@ -150,4 +150,10 @@ RSpec.describe PencilDurability::Pencil do
             expect(pencil.eraser_durability).to be_an(Integer)
         end
     end
+
+    describe "#eraser_degradation" do 
+        it "can be called with 1 argument" do 
+            expect(pencil).to respond_to(:eraser_degradation).with(1).argument
+        end
+    end
 end

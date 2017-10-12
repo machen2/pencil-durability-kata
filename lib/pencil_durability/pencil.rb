@@ -49,4 +49,7 @@ class PencilDurability::Pencil
             @length -= 1
         end
     end
+
+    def eraser_degradation(input)
+    end
 end
