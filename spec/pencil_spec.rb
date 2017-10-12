@@ -197,4 +197,10 @@ RSpec.describe PencilDurability::Pencil do
             expect(test_pencil.erase_from_paper("chuck chuck", paper)).to eq("How much wood would a woodchuc        if a woodchuck could chuck wood?")
         end
     end
+
+    describe "#edit_paper" do 
+        it "is called with 2 arguments" do 
+            expect(pencil).to respond_to(:edit_paper).with(2).arguments
+        end
+    end
 end

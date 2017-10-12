@@ -72,4 +72,7 @@ class PencilDurability::Pencil
         valid_erase = eraser_degradation(input)
         paper_object.erase(input, valid_erase)
     end
+
+    def edit_paper(input, paper_object)
+    end
 end
