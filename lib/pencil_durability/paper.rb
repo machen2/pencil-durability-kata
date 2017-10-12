@@ -1,8 +1,9 @@
 class PencilDurability::Paper
-    attr_reader :paper_text
+    attr_reader :paper_text, :index_of_erased
 
     def initialize
         @paper_text = ""
+        @index_of_erased = []
     end
 
     def write(input_text)
@@ -12,6 +13,7 @@ class PencilDurability::Paper
     def erase(input, valid_erase)
         count = 0
         index = @paper_text.rindex(input)
+        @index_of_erased << index
         
         while count < input.length
             @paper_text[index] = valid_erase[count]
@@ -22,5 +24,16 @@ class PencilDurability::Paper
     end
 
     def edit(input)
+        index = @index_of_erased.pop
+
+        input.split('').each do |character|
+            if @paper_text[index] == ' '
+                @paper_text[index] = character
+            else
+                @paper_text[index] = '@'
+            end
+            index += 1
+        end
+        @paper_text
     end
 end
