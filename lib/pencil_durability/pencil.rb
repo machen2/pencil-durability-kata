@@ -69,5 +69,6 @@ class PencilDurability::Pencil
     end
 
     def erase_from_paper(input)
+        eraser_degradation(input)
     end
 end
