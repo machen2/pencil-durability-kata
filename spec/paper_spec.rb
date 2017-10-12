@@ -61,4 +61,10 @@ RSpec.describe PencilDurability::Paper do
             expect(paper.paper_text).to eq("How much wood would a woodchuck chuck if a wood      could       wood?")
         end
     end
+
+    describe "#edit" do 
+        it "can be called with 1 argument" do
+            expect(paper).to respond_to('edit').with(1).argument
+       end
+    end
 end

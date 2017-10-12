@@ -20,4 +20,7 @@ class PencilDurability::Paper
         end
         @paper_text
     end
+
+    def edit(input)
+    end
 end
