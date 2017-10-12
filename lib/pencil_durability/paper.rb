@@ -18,5 +18,6 @@ class PencilDurability::Paper
             index += 1
             count += 1
         end
+        @paper_text
     end
 end
