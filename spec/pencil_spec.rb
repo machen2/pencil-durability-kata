@@ -206,8 +206,15 @@ RSpec.describe PencilDurability::Pencil do
         it "adjusts the point_durability based on the edit" do 
             pencil.write_to_paper("An apple a day keeps the doctor away", paper)            
             point_value = pencil.point_durability
+            pencil.erase_from_paper("apple", paper)
             pencil.edit_paper("onion", paper)
             expect(pencil.point_durability).to eq(point_value - 5)
+        end
+
+        it "returns the paper text if the paper has no valid erase history" do 
+            pencil.write_to_paper("An apple a day keeps the doctor away", paper)            
+            result = pencil.edit_paper("onion", paper)
+            expect(result).to eq("An apple a day keeps the doctor away")
         end
     end
 end
