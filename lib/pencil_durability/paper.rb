@@ -26,13 +26,15 @@ class PencilDurability::Paper
     def edit(input)
         index = @index_of_erased.pop
 
-        input.split('').each do |character|
-            if @paper_text[index] == ' '
-                @paper_text[index] = character
-            else
-                @paper_text[index] = '@'
+        if index
+            input.split('').each do |character|
+                if @paper_text[index] == ' '
+                    @paper_text[index] = character
+                else
+                    @paper_text[index] = '@'
+                end
+                index += 1
             end
-            index += 1
         end
         @paper_text
     end

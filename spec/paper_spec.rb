@@ -80,5 +80,10 @@ RSpec.describe PencilDurability::Paper do
             paper.edit("artichoke")
             expect(paper.paper_text).to eq("An artich@k@ay keeps the doctor away")
         end
+
+        it "returns the paper_text if there is no erase history to edit" do 
+            paper.write("An apple a day keeps the doctor away")
+            expect(paper.edit("onion")).to eq("An apple a day keeps the doctor away")
+        end
     end
 end
