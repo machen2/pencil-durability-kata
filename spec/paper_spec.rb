@@ -67,11 +67,18 @@ RSpec.describe PencilDurability::Paper do
             expect(paper).to respond_to('edit').with(1).argument
        end
 
-       it "replaces the last erased whitespace with the input text" do 
+        it "replaces the last erased whitespace with the input text" do 
             paper.write("An apple a day keeps the doctor away")
             paper.erase("apple", "     ")
             paper.edit("onion")
             expect(paper.paper_text).to eq("An onion a day keeps the doctor away")
-       end
+        end
+
+        it "replaces any collisions with existing characters on the page with @ symbol" do
+            paper.write("An apple a day keeps the doctor away")
+            paper.erase("apple", "     ")
+            paper.edit("artichoke")
+            expect(paper.paper_text).to eq("An artich@k@ay keeps the doctor away")
+        end
     end
 end
