@@ -161,5 +161,10 @@ RSpec.describe PencilDurability::Pencil do
             pencil.eraser_degradation("Buffalo Bill")
             expect(pencil.eraser_durability).to eq(eraser_value - 11)
         end
+
+        it "returns a string of valid erased text result based on eraser_durability" do
+            result = pencil.eraser_degradation("Buffalo Bill")
+            expect(result).to eq("            ")            
+        end
     end
 end
