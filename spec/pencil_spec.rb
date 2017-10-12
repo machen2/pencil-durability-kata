@@ -175,14 +175,20 @@ RSpec.describe PencilDurability::Pencil do
     end
 
     describe "#erase_from_paper" do 
-        it "is called with an argument" do 
-            expect(pencil).to respond_to(:erase_from_paper).with(1).argument
+        it "is called with 2 arguments" do 
+            expect(pencil).to respond_to(:erase_from_paper).with(2).arguments
         end
 
         it "adjusts eraser_durability correctly based on input string" do
             pencil.write_to_paper("How much wood would a woodchuck chuck if a woodchuck could chuck wood?", paper)
-            pencil.erase_from_paper("chuck")  
+            pencil.erase_from_paper("chuck", paper)  
             expect(pencil.eraser_durability).to eq(15)
        end
+
+       it "erases the valid erase text from the paper object passed in" do 
+            pencil.write_to_paper("How much wood would a woodchuck chuck if a woodchuck could chuck wood?", paper)        
+            pencil.erase_from_paper("chuck", paper)
+            expect(paper.paper_text).to eq("How much wood would a woodchuck chuck if a woodchuck could       wood?")
+        end
     end
 end

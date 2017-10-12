@@ -68,7 +68,8 @@ class PencilDurability::Pencil
         valid_erase.reverse.join("")
     end
 
-    def erase_from_paper(input)
-        eraser_degradation(input)
+    def erase_from_paper(input, paper_object)
+        valid_erase = eraser_degradation(input)
+        paper_object.erase(input, valid_erase)
     end
 end
