@@ -51,5 +51,10 @@ class PencilDurability::Pencil
     end
 
     def eraser_degradation(input)
+        input.split('').each do |character|
+            if character != ' ' && character != '\n'
+                @eraser_durability -= 1
+            end
+        end
     end
 end

@@ -155,5 +155,11 @@ RSpec.describe PencilDurability::Pencil do
         it "can be called with 1 argument" do 
             expect(pencil).to respond_to(:eraser_degradation).with(1).argument
         end
+
+        it "adjusts eraser durability by 1 for each character of the input excluding white spaces" do 
+            eraser_value = pencil.eraser_durability
+            pencil.eraser_degradation("Buffalo Bill")
+            expect(pencil.eraser_durability).to eq(eraser_value - 11)
+        end
     end
 end
