@@ -13,6 +13,12 @@ class PencilDurability::Paper
     def erase(input, valid_erase)
         count = 0
         index = @paper_text.rindex(input)
+
+        if index.nil?
+            puts "Unable to find \"#{input}\" on the paper."
+            return @paper_text
+        end   
+           
         @index_of_erased << index
         
         while count < input.length

@@ -60,6 +60,12 @@ RSpec.describe PencilDurability::Paper do
             paper.erase("chuck", "     ")
             expect(paper.paper_text).to eq("How much wood would a woodchuck chuck if a wood      could       wood?")
         end
+
+        it "returns the unchanged paper text if the input is not found on the paper" do 
+            paper.write("How much wood would a woodchuck chuck if a woodchuck could chuck wood?")
+            paper.erase("bob", "   ")
+            expect(paper.paper_text).to eq("How much wood would a woodchuck chuck if a woodchuck could chuck wood?")
+        end
     end
 
     describe "#edit" do 
