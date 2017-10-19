@@ -47,6 +47,8 @@ class PencilDurability::Pencil
         if @length > 0
             @point_durability = @initial_point_durability
             @length -= 1
+        else
+            puts "This pencil is too short to sharpen."
         end
     end
 
