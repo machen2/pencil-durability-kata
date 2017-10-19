@@ -1,43 +1,56 @@
 # PencilDurability
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/pencil_durability`. To experiment with that code, run `bin/console` for an interactive prompt.
+This project was created as my solution to the Pencil Durability Kata listed [here](https://github.com/PillarTechnology/kata-pencil-durability). It's purpose is to simulate a pencil and it's ability to write, edit text, erase, and be sharpened. 
 
-TODO: Delete this and the text above, and describe your gem
+For more details on the specifications, please visit the link above.
 
 ## Installation
 
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'pencil_durability'
-```
+Fork and clone this repository on Github.
+Make sure you have Ruby and Bundler (`gem install bundler`) installed.
 
 And then execute:
 
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install pencil_durability
+    $ bundle install
 
 ## Usage
 
-TODO: Write usage instructions here
+To run the tests, execute:
 
-## Development
+    $ bundle exec rspec
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+If you would like to experienemt with the functionality of the kata, run `bin/console`.
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+Get started by creating a new pencil and paper object by running the following, making sure to replace `length`, `eraser_durability`, and `point_durability` with integer values of your choosing:
+
+    $ pencil = PencilDurability::Pencil.new(length, eraser_durability, point_durability)
+    $ paper = PencilDurability::Paper.new
+
+From there, you can call any of the following methods on `pencil`, where `input` is the string of text you want to write, edit, or erase and `paper` is the paper object created above:
+
+    $ pencil.write_to_paper(input, paper) 
+    $ pencil.erase_from_paper(input, paper)
+    $ pencil.edit_paper(input, paper)
+
+You can also sharpen the pencil if it becomes dull:
+
+    $ pencil.sharpen
+
+You can create a new pencil if your pencil becomes too short (thus unable to be sharpened) or runs out of erasing capabilities:
+(Please make sure to replace `length`, `eraser_durability`, and `point_durability` with integer values of your choosing.)
+
+    $ pencil = PencilDurability::Pencil.new(length, eraser_durability, point_durability)
+
+You can check the status of your pencil or paper by typing the variable names you declared them with.
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/pencil_durability. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/machen2/pencil-durability-kata. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 ## License
 
-The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
+The is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
 
 ## Code of Conduct
 
-Everyone interacting in the PencilDurability project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/pencil_durability/blob/master/CODE_OF_CONDUCT.md).
+Everyone interacting in the PencilDurability project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/machen2/pencil-durability-kata/blob/master/CODE_OF_CONDUCT.md).
