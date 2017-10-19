@@ -43,4 +43,8 @@ class PencilDurability::Paper
         end
         @paper_text
     end
+
+    def has_erase_history?
+        @index_of_erased != []
+    end
 end

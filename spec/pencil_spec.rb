@@ -217,10 +217,10 @@ RSpec.describe PencilDurability::Pencil do
             expect(pencil.point_durability).to eq(point_value - 5)
         end
 
-        it "returns the paper text if the paper has no valid erase history" do 
+        it "returns a message if the paper has no valid erase history" do 
             pencil.write_to_paper("An apple a day keeps the doctor away", paper)            
             result = pencil.edit_paper("onion", paper)
-            expect(result).to eq("An apple a day keeps the doctor away")
+            expect(result).to eq("There is no erase history to edit.")
         end
 
         it "returns the correct edited string based on input, erase history, and point_durability" do 

@@ -48,7 +48,7 @@ class PencilDurability::Pencil
             @point_durability = @initial_point_durability
             @length -= 1
         else
-            puts "This pencil is too short to sharpen."
+            return "This pencil is too short to sharpen."
         end
     end
 
@@ -75,15 +75,16 @@ class PencilDurability::Pencil
             valid_erase = eraser_degradation(input)
             paper_object.erase(input, valid_erase)
         else 
-            puts "Unable to find \"#{input}\" on the paper."
+            return "Unable to find \'#{input}\' on the paper."
         end
     end
 
     def edit_paper(input, paper_object)
-        if paper_object.index_of_erased != []
+        if paper_object.has_erase_history?
             valid_text = point_degradation(input)
             paper_object.edit(valid_text)
+        else
+            return "There is no erase history to edit."
         end
-        paper_object.paper_text
     end
 end
