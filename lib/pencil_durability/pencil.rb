@@ -10,6 +10,15 @@ class PencilDurability::Pencil
         @initial_point_durability = point_durability
     end
 
+    def sharpen
+        if @length > 0
+            @point_durability = @initial_point_durability
+            @length -= 1
+        else
+            return "This pencil is too short to sharpen."
+        end
+    end
+
     def point_degradation(input)
         valid_text = ""
         dull = false
@@ -41,15 +50,6 @@ class PencilDurability::Pencil
     def write_to_paper(input, paper_object) 
         valid_write = point_degradation(input)
         paper_object.write(valid_write) 
-    end
-
-    def sharpen
-        if @length > 0
-            @point_durability = @initial_point_durability
-            @length -= 1
-        else
-            return "This pencil is too short to sharpen."
-        end
     end
 
     def eraser_degradation(input)

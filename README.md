@@ -6,7 +6,7 @@ For more details on the specifications, please visit the link above.
 
 ## Installation
 
-Fork and clone this repository on Github.
+Fork and clone this repository.
 Make sure you have Ruby and Bundler (`gem install bundler`) installed.
 
 And then execute:
@@ -19,7 +19,7 @@ To run the tests, execute:
 
     $ bundle exec rspec
 
-If you would like to experienemt with the functionality of the kata, run `bin/console`.
+If you would like to experiment with the functionality of the kata, run `bin/console`.
 
 Get started by creating a new pencil and paper object by running the following, making sure to replace `length`, `eraser_durability`, and `point_durability` with integer values of your choosing:
 

@@ -6,6 +6,14 @@ class PencilDurability::Paper
         @index_of_erased = []
     end
 
+    def has_erase_history?
+        @index_of_erased != []
+    end
+    
+    def is_text_present?(input)
+        @paper_text.include?(input) 
+    end
+
     def write(input_text)
         @paper_text += input_text
     end
@@ -24,10 +32,6 @@ class PencilDurability::Paper
         @paper_text
     end
 
-    def is_text_present?(input)
-        @paper_text.include?(input) 
-    end
-
     def edit(input)
         index = @index_of_erased.pop
 
@@ -42,9 +46,5 @@ class PencilDurability::Paper
             end
         end
         @paper_text
-    end
-
-    def has_erase_history?
-        @index_of_erased != []
     end
 end
