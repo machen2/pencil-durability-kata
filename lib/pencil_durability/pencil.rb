@@ -69,8 +69,12 @@ class PencilDurability::Pencil
     end
 
     def erase_from_paper(input, paper_object)
-        valid_erase = eraser_degradation(input)
-        paper_object.erase(input, valid_erase)
+        if paper_object.is_text_present?(input)
+            valid_erase = eraser_degradation(input)
+            paper_object.erase(input, valid_erase)
+        else 
+            puts "Unable to find \"#{input}\" on the paper."
+        end
     end
 
     def edit_paper(input, paper_object)

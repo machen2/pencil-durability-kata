@@ -14,11 +14,6 @@ class PencilDurability::Paper
         count = 0
         index = @paper_text.rindex(input)
 
-        if index.nil?
-            puts "Unable to find \"#{input}\" on the paper."
-            return @paper_text
-        end   
-           
         @index_of_erased << index
         
         while count < input.length
@@ -27,6 +22,10 @@ class PencilDurability::Paper
             count += 1
         end
         @paper_text
+    end
+
+    def is_text_present?(input)
+        @paper_text.include?(input) 
     end
 
     def edit(input)
