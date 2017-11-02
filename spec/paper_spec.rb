@@ -3,19 +3,6 @@ require "spec_helper"
 RSpec.describe PencilDurability::Paper do 
     let(:paper) { PencilDurability::Paper.new }
 
-    describe "#write" do 
-        it "takes a string as an argument and appends it to paper_text" do 
-            paper.write("She sells sea shells")
-            expect(paper.paper_text).to eq("She sells sea shells")
-        end
-
-        it "appends to existing text on the paper" do 
-            paper.write("She sells sea shells")
-            paper.write(" down by the sea shore")
-            expect(paper.paper_text).to eq("She sells sea shells down by the sea shore")
-        end
-    end
-
     describe "#erase" do 
         it "replaces the last occurence of the input with empty spaces" do 
             paper.write("How much wood would a woodchuck chuck if a woodchuck could chuck wood?")

@@ -28,17 +28,23 @@ RSpec.describe PencilDurability::Pencil do
         it "adjusts point_durability correctly based on input string" do
             pencil.write_to_paper("She sells sea shells", paper)
             expect(pencil.point_durability).to eq(982)         
-       end
+        end
 
-       it "appends the valid input text to the paper object passed in" do 
-        pencil.write_to_paper("She sells sea shells", paper)
-        expect(paper.paper_text).to eq("She sells sea shells")
-       end
+        it "appends the valid input text to the paper object passed in" do 
+            pencil.write_to_paper("She sells sea shells", paper)
+            expect(paper.paper_text).to eq("She sells sea shells")
+        end
 
-       it "returns the correct string based on input and durability" do
-        test_pencil = PencilDurability::Pencil.new(10, 20, 4)
-        expect(test_pencil.write_to_paper("Text", paper)).to eq("Tex ")
-       end
+        it "appends valid input to existing text on the paper" do 
+            pencil.write_to_paper("She sells sea shells", paper)
+            pencil.write_to_paper(" down by the sea shore", paper)
+            expect(paper.paper_text).to eq("She sells sea shells down by the sea shore")
+        end
+
+        it "returns the correct string based on input and durability" do
+            test_pencil = PencilDurability::Pencil.new(10, 20, 4)
+            expect(test_pencil.write_to_paper("Text", paper)).to eq("Tex ")
+        end
     end
    
     describe "#sharpen" do 
