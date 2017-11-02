@@ -2,40 +2,8 @@ require "spec_helper"
 require_relative '../lib/pencil_durability/paper.rb'
 
 RSpec.describe PencilDurability::Pencil do 
-    it "is defined as a class" do 
-        expect(PencilDurability::Pencil).to be_a(Class)
-    end
-
     let(:pencil) { PencilDurability::Pencil.new(10, 20, 1000) }
     let(:paper) { PencilDurability::Paper.new }    
-    
-    describe "#new" do 
-        it "initializes a new instance of pencil" do 
-            expect{PencilDurability::Pencil.new(10, 20, 1000)}.to_not raise_error
-        end
-
-        it "initializes an instance with a given value for point durability" do
-            test_pencil = PencilDurability::Pencil.new(10, 20, 1000)
-            expect(test_pencil.point_durability).to eq(1000)
-        end
-
-        it "sets a default value for point_durability if not given one upon initilization" do 
-            test_pencil = PencilDurability::Pencil.new(10, 20)
-            expect(test_pencil.point_durability).to eq(5000)
-        end
-
-        it "sets the initial point durability upon initialization" do 
-            expect(pencil.initial_point_durability).to eq(1000)
-        end
-
-        it "initializes an instance with a given value for pencil length" do
-            expect(pencil.length).to eq(10)
-        end
-
-        it "initializes an instance with a given value for eraser durability" do
-            expect(pencil.eraser_durability).to eq(20)
-        end
-    end 
 
     describe "#point_durability" do 
         it "has a point_durability" do 
@@ -48,10 +16,6 @@ RSpec.describe PencilDurability::Pencil do
     end
 
     describe "#point_degradation" do 
-        it "can be called with 1 argument" do 
-            expect(pencil).to respond_to(:point_degradation).with(1).argument
-        end
-
         it "adjusts point durability based on input" do 
             point_value = pencil.point_durability
             pencil.point_degradation("She sells sea shells")
@@ -70,11 +34,7 @@ RSpec.describe PencilDurability::Pencil do
         end
     end
 
-    describe "#write_to_paper" do 
-        it "is called with 2 arguments" do 
-            expect(pencil).to respond_to(:write_to_paper).with(2).argument
-        end   
-        
+    describe "#write_to_paper" do     
         it "adjusts point_durability correctly based on input string" do
             pencil.write_to_paper("She sells sea shells", paper)
             expect(pencil.point_durability).to eq(982)         
@@ -102,10 +62,6 @@ RSpec.describe PencilDurability::Pencil do
     end
    
     describe "#sharpen" do 
-        it "can be called with no arguments" do 
-            expect(pencil).to respond_to('sharpen').with(0).arguments
-        end
-
         it "resets the point durability of the pencil" do 
             pencil.write_to_paper("She sells sea shells", paper)
             pencil.sharpen
@@ -152,10 +108,6 @@ RSpec.describe PencilDurability::Pencil do
     end
 
     describe "#eraser_degradation" do 
-        it "can be called with 1 argument" do 
-            expect(pencil).to respond_to(:eraser_degradation).with(1).argument
-        end
-
         it "adjusts eraser durability by 1 for each character of the input excluding white spaces" do 
             eraser_value = pencil.eraser_durability
             pencil.eraser_degradation("Buffalo Bill")
@@ -175,10 +127,6 @@ RSpec.describe PencilDurability::Pencil do
     end
 
     describe "#erase_from_paper" do 
-        it "is called with 2 arguments" do 
-            expect(pencil).to respond_to(:erase_from_paper).with(2).arguments
-        end
-
         it "adjusts eraser_durability correctly based on input string" do
             pencil.write_to_paper("How much wood would a woodchuck chuck if a woodchuck could chuck wood?", paper)
             pencil.erase_from_paper("chuck", paper)  
@@ -205,10 +153,6 @@ RSpec.describe PencilDurability::Pencil do
     end
 
     describe "#edit_paper" do 
-        it "is called with 2 arguments" do 
-            expect(pencil).to respond_to(:edit_paper).with(2).arguments
-        end
-
         it "adjusts the point_durability based on the edit" do 
             pencil.write_to_paper("An apple a day keeps the doctor away", paper)            
             point_value = pencil.point_durability
