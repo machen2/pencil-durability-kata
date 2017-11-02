@@ -5,16 +5,6 @@ RSpec.describe PencilDurability::Pencil do
     let(:pencil) { PencilDurability::Pencil.new(10, 20, 1000) }
     let(:paper) { PencilDurability::Paper.new }    
 
-    describe "#point_durability" do 
-        it "has a point_durability" do 
-            expect(pencil).to respond_to('point_durability')
-        end
-
-        it "returns an integer when called" do 
-            expect(pencil.point_durability).to be_an(Integer)
-        end
-    end
-
     describe "#point_degradation" do 
         it "adjusts point durability based on input" do 
             point_value = pencil.point_durability
@@ -50,16 +40,6 @@ RSpec.describe PencilDurability::Pencil do
         expect(test_pencil.write_to_paper("Text", paper)).to eq("Tex ")
        end
     end
-
-    describe "#initial_point_durability" do 
-        it "has an initial point durability" do 
-            expect(pencil).to respond_to('initial_point_durability')
-        end
-
-        it "returns an integer when called" do 
-            expect(pencil.initial_point_durability).to be_an(Integer)
-        end
-    end
    
     describe "#sharpen" do 
         it "resets the point durability of the pencil" do 
@@ -84,26 +64,6 @@ RSpec.describe PencilDurability::Pencil do
             test_pencil = PencilDurability::Pencil.new(0, 20, 1000)
             test_pencil.sharpen
             expect(test_pencil.length).to eq(0)
-        end
-    end
-
-    describe "#length" do 
-        it "has a length" do 
-            expect(pencil).to respond_to('length')
-        end
-
-        it "returns an integer when called" do 
-            expect(pencil.length).to be_an(Integer)
-        end
-    end
-
-    describe "#eraser_durability" do 
-        it "has an eraser durability" do 
-            expect(pencil).to respond_to('eraser_durability')
-        end
-
-        it "returns an integer when called" do 
-            expect(pencil.eraser_durability).to be_an(Integer)
         end
     end
 

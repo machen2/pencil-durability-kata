@@ -3,16 +3,6 @@ require "spec_helper"
 RSpec.describe PencilDurability::Paper do 
     let(:paper) { PencilDurability::Paper.new }
 
-    describe "#paper_text" do 
-        it "has paper_text" do 
-            expect(paper).to respond_to('paper_text')
-        end
-
-        it "returns a string when called" do 
-            expect(paper.paper_text).to be_a(String)
-        end
-    end
-
     describe "#write" do 
         it "takes a string as an argument and appends it to paper_text" do 
             paper.write("She sells sea shells")
