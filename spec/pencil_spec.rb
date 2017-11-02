@@ -105,6 +105,13 @@ RSpec.describe PencilDurability::Pencil do
             expect(paper.paper_text).to eq("How much wood would a woodchuck chuck if a woodchuck could       wood?")
         end
 
+        it "erases the correct last occurrence of the input if the same input is erased again" do 
+            pencil.write_to_paper("How much wood would a woodchuck chuck if a woodchuck could chuck wood?", paper)
+            pencil.erase_from_paper("chuck", paper)
+            pencil.erase_from_paper("chuck", paper)
+            expect(paper.paper_text).to eq("How much wood would a woodchuck chuck if a wood      could       wood?")
+        end
+
         it "returns the correct altered string based on input, valid erase, and eraser durability" do
             test_pencil = PencilDurability::Pencil.new(10, 6, 1000)
             test_pencil.write_to_paper("How much wood would a woodchuck chuck if a woodchuck could chuck wood?", paper)

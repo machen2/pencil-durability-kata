@@ -3,21 +3,6 @@ require "spec_helper"
 RSpec.describe PencilDurability::Paper do 
     let(:paper) { PencilDurability::Paper.new }
 
-    describe "#erase" do 
-        it "replaces the last occurence of the input with empty spaces" do 
-            paper.write("How much wood would a woodchuck chuck if a woodchuck could chuck wood?")
-            paper.erase("chuck", "     ")
-            expect(paper.paper_text).to eq("How much wood would a woodchuck chuck if a woodchuck could       wood?")
-        end
-
-        it "erases the correct last occurrence of the input if the same input is erased again" do 
-            paper.write("How much wood would a woodchuck chuck if a woodchuck could chuck wood?")
-            paper.erase("chuck", "     ")
-            paper.erase("chuck", "     ")
-            expect(paper.paper_text).to eq("How much wood would a woodchuck chuck if a wood      could       wood?")
-        end
-    end
-
     describe "#edit" do 
         it "replaces the last erased whitespace with the input text" do 
             paper.write("An apple a day keeps the doctor away")
