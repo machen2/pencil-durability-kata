@@ -146,5 +146,12 @@ RSpec.describe PencilDurability::Pencil do
             result = pencil.edit_paper("onion", paper)
             expect(result).to eq("An onion a day keeps the doctor away")            
         end
+
+        it "replaces any collisions with existing characters on the page with @ symbol" do
+            pencil.write_to_paper("An apple a day keeps the doctor away", paper)
+            pencil.erase_from_paper("apple", paper)
+            result = pencil.edit_paper("artichoke", paper)
+            expect(result).to eq("An artich@k@ay keeps the doctor away")
+        end
     end
 end
