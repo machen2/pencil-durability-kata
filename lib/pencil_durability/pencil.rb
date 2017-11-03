@@ -19,32 +19,46 @@ class PencilDurability::Pencil
         end
     end
 
+    def count_point_cost(input)
+		capital_count = input.scan(/[A-Z]/).length * 2
+        lowercase_count = input.scan(/[a-z]/).length
+        
+        return capital_count + lowercase_count
+	end
+	
+    def reduce_point_durability(input, input_cost)
+		point_remainder = 0
+		if @point_durability > input_cost 
+			@point_durability -= input_cost
+		else
+			point_remainder = input_cost - @point_durability
+			@point_durability = 0
+		end
+		point_remainder
+	end
+	
+	def calculate_valid_text(input, point_remainder)
+		if point_remainder == 0
+			return input
+		end
+		
+        index = -1
+		while point_remainder > 0 
+			if ('A'..'Z').include?(input[index])
+				point_remainder -= 2
+			elsif ('a'..'z').include?(input[index])
+				point_remainder -= 1
+            end	
+            input[index] = " "            
+			index -= 1
+		end
+		input
+    end
+    
     def point_degradation(input)
-        valid_text = ""
-        dull = false
-
-        input.split('').each do |character|
-            if point_durability == 0 || (('A'..'Z').include?(character) && @point_durability < 2)
-                valid_text += " "
-                dull = true
-                next
-            end
-
-            if ('A'..'Z').include?(character) && @point_durability >= 2
-                @point_durability -= 2
-                valid_text += character
-            elsif character == '\n' || character == ' '
-                valid_text += character                
-            elsif @point_durability >= 1
-                if dull == true 
-                    valid_text += " "
-                else
-                    @point_durability -= 1
-                    valid_text += character 
-                end               
-            end
-        end    
-        valid_text
+		input_cost = count_point_cost(input)
+		point_remainder = reduce_point_durability(input, input_cost)
+		calculate_valid_text(input, point_remainder)
     end
 
     def write_to_paper(input, paper_object) 
