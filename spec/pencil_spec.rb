@@ -12,15 +12,15 @@ RSpec.describe PencilDurability::Pencil do
             expect(pencil.point_durability).to eq(point_value - 18)
         end
         
-        it "returns a string of valid text based on point_durability" do
+        it "returns a point value of the text that cant be written due to no point durability" do
             result = pencil.point_degradation("She sells sea shells")
-            expect(result).to eq("She sells sea shells")            
+            expect(result).to eq(0)            
         end
 
         it "adds spaces instead of characters to valid_text if point_durability is too low" do 
             test_pencil = PencilDurability::Pencil.new(10, 20, 5)
             result = test_pencil.point_degradation("She Sells")
-            expect(result).to eq("She      ")
+            expect(result).to eq(5)
         end
     end
 

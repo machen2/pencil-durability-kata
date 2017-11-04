@@ -27,43 +27,43 @@ class PencilDurability::Pencil
 	end
 	
 	def reduce_point_durability(input_cost)
-		point_remainder = 0
+		points_not_written = 0
 		if @point_durability > input_cost 
 			@point_durability -= input_cost
 		else
-			point_remainder = input_cost - @point_durability
+			points_not_written = input_cost - @point_durability
 			@point_durability = 0
 		end
-		point_remainder
+		points_not_written
+	end
+
+	def point_degradation(input)
+		input_cost = count_point_cost(input)
+		points_not_written = reduce_point_durability(input_cost)
 	end
 	
-	def calculate_writable_text(input, point_remainder)
-		if point_remainder == 0
+	def calculate_writeable_text(input, points_not_written)
+		if points_not_written == 0
 			return input
 		end
-		
+
 		index = -1
-		while point_remainder > 0 
+		while points_not_written > 0 
 			if ('A'..'Z').include?(input[index])
-				point_remainder -= 2
+				points_not_written -= 2
 			elsif ('a'..'z').include?(input[index])
-				point_remainder -= 1
+				points_not_written -= 1
 			end	
 			input[index] = " "            
 			index -= 1
 		end
 		input
 	end
-	
-	def point_degradation(input)
-		input_cost = count_point_cost(input)
-		point_remainder = reduce_point_durability(input_cost)
-		calculate_writable_text(input, point_remainder)
-	end
 
 	def write_to_paper(input, paper_object) 
-		valid_write = point_degradation(input)
-		paper_object.write(valid_write) 
+		points_not_written = point_degradation(input)
+		writable_text = calculate_writeable_text(input, points_not_written)
+		paper_object.write(writable_text) 
 	end
 
 	def eraser_degradation(input)
@@ -91,8 +91,9 @@ class PencilDurability::Pencil
 
 	def edit_paper(input, paper_object)
 		if paper_object.has_erase_history?
-			valid_text = point_degradation(input)
-			paper_object.edit(valid_text)
+			points_not_written = point_degradation(input)
+			writeable_text = calculate_writeable_text(input, points_not_written)
+			paper_object.edit(writeable_text)
 		else
 			return "There is no erase history to edit."
 		end
